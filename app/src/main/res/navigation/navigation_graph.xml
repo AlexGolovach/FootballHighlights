@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/nav_splash"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/nav_splash"
+        android:name="com.renovavision.footballhighlights.presentation.splash.SplashFragment"
+        android:label="SplashFragment">
+
+        <action
+            android:id="@+id/navigate_to_highlights"
+            app:destination="@id/nav_highlights"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_highlights"
+        android:name="com.renovavision.footballhighlights.presentation.list.HighlightsListFragment"
+        android:label="HighlightsListFragment">
+
+        <action
+            android:id="@+id/navigate_to_highlight_details"
+            app:destination="@id/nav_highlight_details"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_highlight_details"
+        android:name="com.renovavision.footballhighlights.presentation.details.HighlightDetailsFragment"
+        android:label="HighlightDetailsFragment">
+
+        <argument
+            android:name="videoUrl"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+</navigation>

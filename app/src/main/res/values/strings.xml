@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FootballHighlights</string>
+
+    <string name="retry">Retry</string>
+    <string name="can_not_load_highlights">Cannot load highlights. Try again.</string>
+    <string name="can_not_load_highlight_details">Cannot load highlight details. Try again.</string>
+    <string name="highlights">Highlights</string>
+    <string name="highlight_details">Highlight details</string>
+</resources>
