@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.renovavision.footballhighlights.data.Match
 import com.renovavision.footballhighlights.domain.GetHighlightsUseCase
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -19,7 +18,6 @@ data class State(
     val showError: Boolean = false
 )
 
-@HiltViewModel
 class HighlightsListViewModel @Inject constructor(private val useCase: GetHighlightsUseCase) : ViewModel() {
 
     @ExperimentalCoroutinesApi

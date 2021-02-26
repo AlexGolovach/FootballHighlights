@@ -4,15 +4,12 @@ import com.renovavision.footballhighlights.BuildConfig
 import com.renovavision.footballhighlights.data.HighlightsService
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
 object NetworkModule {
 
     @Provides
@@ -24,6 +21,5 @@ object NetworkModule {
         .build()
 
     @Provides
-    @Singleton
     fun provideApiService(retrofit: Retrofit) = retrofit.create(HighlightsService::class.java)
 }

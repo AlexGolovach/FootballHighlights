@@ -4,13 +4,13 @@ import android.animation.Animator
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.renovavision.footballhighlights.R
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_splash.*
+import javax.inject.Inject
 
-@AndroidEntryPoint
-class SplashFragment: Fragment(R.layout.fragment_splash) {
+class SplashFragment @Inject constructor(viewModelFactory: ViewModelProvider.Factory): Fragment(R.layout.fragment_splash) {
 
     private val animatorListener = object : Animator.AnimatorListener {
 

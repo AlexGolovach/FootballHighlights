@@ -4,17 +4,18 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.renovavision.footballhighlights.R
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_highlights_list.*
 import kotlinx.coroutines.flow.collect
+import javax.inject.Inject
 
-@AndroidEntryPoint
-class HighlightsListFragment : Fragment(R.layout.fragment_highlights_list) {
+class HighlightsListFragment @Inject constructor(private val viewModelFactory: ViewModelProvider.Factory) :
+    Fragment(R.layout.fragment_highlights_list) {
 
-    private val viewModel: HighlightsListViewModel by viewModels()
+    private val viewModel: HighlightsListViewModel by viewModels { viewModelFactory }
 
     private val adapter = HighlightAdapter {
         findNavController().navigate(
