@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.renovavision.footballhighlights.R
@@ -12,12 +11,13 @@ import kotlinx.android.synthetic.main.fragment_highlight_details.*
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
-class HighlightDetailsFragment @Inject constructor(private val viewModelFactory: ViewModelProvider.Factory) :
-    Fragment(R.layout.fragment_highlight_details) {
-
-    private val viewModel: HighlightDetailsViewModel by viewModels { viewModelFactory }
+class HighlightDetailsFragment @Inject constructor(): Fragment(R.layout.fragment_highlight_details) {
 
     private val args: HighlightDetailsFragmentArgs by navArgs()
+
+    private val viewModel: HighlightDetailsViewModel by viewModels { HighlightDetailsViewModelFactory().apply {
+        videoUrl = args.videoUrl!!
+    } }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,13 +27,13 @@ class HighlightDetailsFragment @Inject constructor(private val viewModelFactory:
             settings.javaScriptEnabled = true
         }
 
-//        lifecycleScope.launchWhenStarted {
-//            viewModel.data.collect {
-//                webView.apply {
-//                    loadData(it, "text/html", "utf-8")
-//                    settings.javaScriptEnabled = true
-//                }
-//            }
-//        }
+        lifecycleScope.launchWhenStarted {
+            viewModel.data.collect {
+                webView.apply {
+                    loadData(it, "text/html", "utf-8")
+                    settings.javaScriptEnabled = true
+                }
+            }
+        }
     }
 }

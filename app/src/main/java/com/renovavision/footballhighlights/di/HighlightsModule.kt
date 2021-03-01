@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.renovavision.footballhighlights.inject.FragmentKey
 import com.renovavision.footballhighlights.inject.ViewModelKey
 import com.renovavision.footballhighlights.presentation.details.HighlightDetailsFragment
-import com.renovavision.footballhighlights.presentation.details.HighlightDetailsViewModel
 import com.renovavision.footballhighlights.presentation.list.HighlightsListFragment
 import com.renovavision.footballhighlights.presentation.list.HighlightsListViewModel
 import com.renovavision.footballhighlights.presentation.splash.SplashFragment
@@ -35,9 +34,4 @@ interface HighlightsModule {
     @IntoMap
     @ViewModelKey(HighlightsListViewModel::class)
     fun highlightsListViewModel(viewModel: HighlightsListViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(HighlightDetailsViewModel::class)
-    fun highlightDetailsViewModel(viewModel: HighlightDetailsViewModel): ViewModel
 }

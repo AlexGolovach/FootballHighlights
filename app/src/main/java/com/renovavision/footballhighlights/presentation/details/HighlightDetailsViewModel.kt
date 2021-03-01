@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
-class HighlightDetailsViewModel @Inject constructor() : ViewModel() {
+class HighlightDetailsViewModel constructor(videoUrl: String) : ViewModel() {
 
     private val _data: MutableStateFlow<String?> = MutableStateFlow(null)
 
@@ -13,6 +13,6 @@ class HighlightDetailsViewModel @Inject constructor() : ViewModel() {
         get() = _data
 
     init {
-//        _data.value = videoUrl
+        _data.value = videoUrl
     }
 }
